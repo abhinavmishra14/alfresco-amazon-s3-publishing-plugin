@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+<!-- 
+   =======================================================
+       Alfresco Amazon S3 Channel Publishing Plugin
+       Copyright &copy; 2013-2014. Abhinav Kumar Mishra. 
+       All rights reserved.
+       Developed by Abhinav K Mishra 
+   =======================================================
+-->
+<beans>
+
+    <bean id="s3.workflowBootstrap" parent="workflowDeployer">
+        <property name="workflowDefinitions">
+            <list>
+                <props>
+                    <prop key="engineId">activiti</prop>
+                    <prop key="location">alfresco/module/s3-integration/workflow/review-publish.activiti.bpmn20.xml</prop>
+                    <prop key="mimetype">text/xml</prop>
+                    <prop key="redeploy">false</prop>           
+                </props>
+            </list>
+        </property>
+        <property name="models">
+            <list>
+                <value>alfresco/module/s3-integration/model/s3WorkflowModel.xml</value>
+            </list>
+        </property>
+        <property name="labels">
+            <list>
+                <value>alfresco.module.s3-integration.messages.s3Workflow</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>

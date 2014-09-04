@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+<!-- 
+   =======================================================
+       Alfresco Amazon S3 Channel Publishing Plugin
+       Copyright &copy; 2013-2014. Abhinav Kumar Mishra. 
+       All rights reserved.
+       Developed by Abhinav K Mishra 
+   =======================================================
+-->
+<beans>
+    <import resource="classpath:alfresco/module/s3-integration/context/s3-publishing-context.xml" />
+    <import resource="classpath:alfresco/module/s3-integration/context/s3-workflow-context.xml" />
+</beans>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+   =======================================================
+       Alfresco Amazon S3 Channel Publishing Plugin
+       Copyright &copy; 2013-2014. Abhinav Kumar Mishra. 
+       All rights reserved.
+       Developed by Abhinav K Mishra 
+   =======================================================
+-->
+<model name="s3wf:workflowmodel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+	<description>Alfresco Amazon S3 Workflow Model</description>
+	<author>Abhinav Kumar Mishra</author>
+	<version>1.0</version>
+
+	<imports>
+		<import uri="http://www.alfresco.org/model/dictionary/1.0"
+			prefix="d" />
+		<import uri="http://www.alfresco.org/model/bpm/1.0" prefix="bpm" />
+		<import uri="http://www.alfresco.org/model/workflow/1.0"
+			prefix="wf" />
+	</imports>
+
+	<namespaces>
+		<namespace
+			uri="http://www.alfresco.org/model/publishing/s3/workflow/1.0"
+			prefix="s3wf" />
+	</namespaces>
+
+	<types>
+
+		<type name="s3wf:activitiReviewTask">
+			<parent>wf:activitiReviewTask</parent>
+			<mandatory-aspects>
+				<aspect>s3wf:channelNameAspect</aspect>
+			</mandatory-aspects>
+		</type>
+
+		<type name="s3wf:submitReviewTask">
+			<parent>wf:submitReviewTask</parent>
+		</type>
+
+		<type name="s3wf:approvedTask">
+			<parent>wf:approvedTask</parent>
+		</type>
+
+		<type name="s3wf:rejectedTask">
+			<parent>wf:rejectedTask</parent>
+		</type>
+
+	</types>
+
+	<aspects>
+		<aspect name="s3wf:channelNameAspect">
+			<properties>
+				<property name="s3wf:channelName">
+					<type>d:text</type>
+					<mandatory>true</mandatory>
+				</property>
+			</properties>
+		</aspect>
+	</aspects>
+
+</model>
+

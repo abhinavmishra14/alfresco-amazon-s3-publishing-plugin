@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+<!-- 
+   =======================================================
+       Alfresco Amazon S3 Channel Publishing Plugin
+       Copyright &copy; 2013-2014. Abhinav Kumar Mishra. 
+       All rights reserved.
+       Developed by Abhinav K Mishra 
+   =======================================================
+-->
+<beans>
+   <bean parent="publishingService_dictionaryBootstrap" depends-on="dictionaryBootstrap">
+      <property name="models">
+         <list>
+            <value>alfresco/module/s3-integration/model/s3Model.xml</value>
+         </list>
+      </property>
+   </bean>
+
+    <bean id="s3ChannelMessageBundle" class="org.alfresco.i18n.ResourceBundleBootstrapComponent">
+        <property name="resourceBundles">
+            <list>
+                <value>alfresco.module.s3-integration.messages.s3-publishing</value>
+            </list>
+        </property>
+    </bean>
+
+   <bean id="s3DeliveryChannelType" class="org.abhinav.alfresco.publishing.s3.S3ChannelType" parent="baseChannelType">
+      <property name="publishingHelper" ref="s3PublishingHelper" />
+      <property name="contentService" ref="ContentService" />
+   </bean>
+
+   <bean id="s3PublishingHelper" class="org.abhinav.alfresco.publishing.s3.S3PublishingHelper"/>
+
+</beans>

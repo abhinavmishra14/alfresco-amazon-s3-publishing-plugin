@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+   =======================================================
+       Alfresco Amazon S3 Channel Publishing Plugin
+       Copyright &copy; 2013-2014. Abhinav Kumar Mishra. 
+       All rights reserved.
+       Developed by Abhinav K Mishra 
+   =======================================================
+-->
+<model name="s3:publishingmodel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+	<description>Alfresco Amazon S3 Publishing Content Model</description>
+	<author>Abhinav Kumar Mishra</author>
+	<published>2014-08-30</published>
+	<version>1.0</version>
+
+	<imports>
+		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
+		<import uri="http://www.alfresco.org/model/system/1.0" prefix="sys" />
+		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
+		<import uri="http://www.alfresco.org/model/publishing/1.0" prefix="pub" />
+	</imports>
+
+	<namespaces>
+		<namespace uri="http://www.alfresco.org/model/publishing/s3/1.0" prefix="s3" />
+	</namespaces>
+
+	<types>
+		<type name="s3:DeliveryChannel">
+			<title>S3 Delivery Channel</title>
+			<description>Node type used to represent S3 delivery channels</description>
+			<parent>pub:DeliveryChannel</parent>
+			<mandatory-aspects>
+				<aspect>s3:DeliveryChannelAspect</aspect>
+			</mandatory-aspects>
+		</type>
+
+	</types>
+
+	<aspects>
+		<aspect name="s3:DeliveryChannelAspect">
+			<title>S3 Delivery Channel Aspect</title>
+			<description>Applied to a node that represents a s3 delivery channel</description>
+			<properties>
+				<property name="s3:bucket">
+					<title>S3 Bucket Name</title>
+					<type>d:text</type>
+				</property>
+			</properties>
+		</aspect>
+	</aspects>
+</model>
