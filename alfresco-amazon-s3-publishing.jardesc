@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jardesc>
-	<jar path="./alfresco-amazon-s3-publishing-plugin/jar/alfresco-amazon-s3-publishing.jar"/>
-	<options overwrite="false" compress="true" exportErrors="true" exportWarnings="true" saveDescription="true" descriptionLocation="/alfresco-amazon-s3-publishing-plugin/alfresco-amazon-s3-publishing-plugin.jardesc" useSourceFolders="false" buildIfNeeded="true" includeDirectoryEntries="false" storeRefactorings="false"/>
+	<jar path="./AmazonS3_Alfresco_Publishing/jar/alfresco-amazon-s3-publishing.jar"/>
+	<options overwrite="false" compress="true" exportErrors="true" exportWarnings="true" saveDescription="true" descriptionLocation="/AmazonS3_Alfresco_Publishing/AmazonS3_Alfresco_Publishing.jardesc" useSourceFolders="false" buildIfNeeded="true" includeDirectoryEntries="false" storeRefactorings="false"/>
 	<manifest manifestVersion="1.0" usesManifest="true" reuseManifest="false" saveManifest="false" generateManifest="true" manifestLocation="">
 	<sealing sealJar="false">
 	<packagesToSeal/>
@@ -9,6 +9,6 @@
 	</sealing>
 	</manifest>
 	<selectedElements exportClassFiles="true" exportOutputFolder="false" exportJavaFiles="false">
-	  <folder path="/alfresco-amazon-s3-publishing-plugin/src"/>
+	  <folder path="/AmazonS3_Alfresco_Publishing/src"/>
 	</selectedElements>
 </jardesc>
