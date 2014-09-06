@@ -1,15 +1,28 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
 <!-- 
-   =======================================================
+   =======================================================================================
        Alfresco Amazon S3 Channel Publishing Plugin
        Copyright &copy; 2013-2014. Abhinav Kumar Mishra. 
        All rights reserved.
        Developed by Abhinav K Mishra 
-   =======================================================
+       Referene: http://wiki.alfresco.com/wiki/Data_Dictionary_Guide#Model_Bootstrapping
+   ========================================================================================
 -->
 <beans>
-   <bean parent="publishingService_dictionaryBootstrap" depends-on="dictionaryBootstrap">
+
+   <!-- [Bean definition to be used for Alfresco version 4.x] -->
+   <!--
+     <bean parent="publishingService_dictionaryBootstrap" depends-on="dictionaryBootstrap">
+	   <property name="models">
+			 <list>
+				<value>alfresco/module/s3-integration/model/s3Model.xml</value>
+			 </list>
+		  </property>
+	 </bean>
+   -->
+   <!-- [Bean definition to be used for Alfresco version 5.x and above] -->
+   <bean id="s3.dictionaryBootstrap" parent="dictionaryModelBootstrap" depends-on="dictionaryBootstrap">
       <property name="models">
          <list>
             <value>alfresco/module/s3-integration/model/s3Model.xml</value>
@@ -31,5 +44,4 @@
    </bean>
 
    <bean id="s3PublishingHelper" class="org.abhinav.alfresco.publishing.s3.S3PublishingHelper"/>
-
 </beans>
