@@ -15,7 +15,7 @@
             <list>
                 <props>
                     <prop key="engineId">activiti</prop>
-                    <prop key="location">alfresco/module/s3-integration/workflow/review-publish.activiti.bpmn20.xml</prop>
+                    <prop key="location">alfresco/module/s3-integration/workflow/s3review-publish.activiti.bpmn20.xml</prop>
                     <prop key="mimetype">text/xml</prop>
                     <prop key="redeploy">false</prop>           
                 </props>

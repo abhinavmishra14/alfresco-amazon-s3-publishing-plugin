@@ -8,7 +8,7 @@
        Developed by Abhinav K Mishra 
    =======================================================
 -->
-<project name="Alfresco Amazon S3 Channel Publishing Plugin Build Project" default="build-amp" basedir=".">
+<project name="Alfresco Amazon S3 Channel Publishing Plugin Build Project" default="build-alfresco-amp" basedir=".">
 	
     <property name="alfresco.install.dir" value="C:/Alfresco"/>   
     <property name="alfresco.deploy.dir" value="${alfresco.install.dir}/tomcat/webapps"/>
@@ -48,39 +48,42 @@
        		destdir="${build.dir}/classes" includeantruntime="true"/>
     </target>
                        
-    <target name="jar" depends="-compile" description="Package the Module in jar file." >
+    <target name="alfresco-jar" depends="-compile" description="Package the Module in jar file." >
         <mkdir dir="${build.dir}/classes/META-INF" />
         <jar destfile="${alf.jar.file}">
            <fileset dir="${build.dir}/classes" includes="**/*.class, META-INF/*.*" />
         </jar>
-    	
+    </target>
+	
+	<target name="share-jar" depends="-compile" description="Package the Module in jar file." >
+        <mkdir dir="${build.dir}/classes/META-INF" />
     	<copy todir="${build.dir}/classes/META-INF" 
     		file="${basedir}/config/share/alfresco/web-extension/share-config-custom.xml"/>
-    	
         <jar destfile="${share.jar.file}">
            <!-- Packaging the share-config-custom.xml file to jar file and deploy to share -->
 	       <fileset dir="${build.dir}/classes" includes="META-INF/*.*" />
     	</jar>
-    </target>
+	</target>
                
-    <target name="build-amp" depends="jar" description="Package the Module in amp file." >
+    <target name="build-alfresco-amp" depends="alfresco-jar" description="Package the Module in amp file." >
         <zip destfile="${alf.amp.file}" >
            <fileset dir="${build.dir}" includes="lib/*.jar" />
-           <fileset dir="${project.dir}" includes="config/**/*.*" excludes="**/module.properties" />
+           <fileset dir="${project.dir}" includes="config/**/*.*" excludes="**/module.properties config/share/**" />
            <fileset dir="${project.dir}/config/alfresco/module/s3-integration" includes="module.properties" />
            <fileset dir="${project.dir}" includes="lib/*.jar" 
         	     excludes="lib/commons-logging-1.1.1.jar lib/commons-httpclient-3.1.jar" />
         </zip>
-    	
-    	<zip destfile="${share.amp.file}" >
-            <fileset dir="${build.dir}" includes="lib/*alfresco-share-amazon-s3-publishing.jar" />
-    	</zip>
     </target>
 	
-	<target name="deploy-war" depends="build-amp" description="Deploy the war file to alfresco webapps" >
-		
-        <echo>Installing amps into war files..</echo>
-		
+	 <target name="build-share-amp" depends="share-jar" description="Package the Module in amp file." >    	
+    	<zip destfile="${share.amp.file}" >
+            <fileset dir="${project.dir}/config/alfresco/module/s3-integration" includes="module.properties" />
+            <fileset dir="${build.dir}" includes="lib/*alfresco-share-amazon-s3-publishing.jar" />
+    	</zip>
+	</target>
+	
+	<target name="deploy-alfresco-war" depends="build-alfresco-amp" description="Deploy the war file to tomcat webapps" >
+        <echo>Installing amps into alfresco.war files..</echo>
 		<java dir="." fork="true"
 	        classname="org.alfresco.repo.module.tool.ModuleManagementTool">
 	        <classpath refid="class.path"/>
@@ -92,15 +95,30 @@
 	        classname="org.alfresco.repo.module.tool.ModuleManagementTool">
 	        <classpath refid="class.path"/>
 	        <arg line="list ${alfresco.war.file}"/>
-		</java>
-		
+		</java>			
+		<echo>Alfresco deployment has been completed..</echo>
+	</target>
+	
+	<target name="deploy-share-war" depends="build-share-amp" description="Deploy the war file to tomcat webapps" >
+        <echo>Installing amps into share.war files..</echo>
 		<java dir="." fork="true"
 	        classname="org.alfresco.repo.module.tool.ModuleManagementTool">
 	        <classpath refid="class.path"/>
 	        <arg line="install ${build.dir}/amp/ ${share.war.file}
 	                -directory -force"/>
 		</java>
-			
-		<echo>Deployment has been completed..</echo>
+		<java dir="." fork="true"
+	        classname="org.alfresco.repo.module.tool.ModuleManagementTool">
+	        <classpath refid="class.path"/>
+	        <arg line="list ${share.war.file}"/>
+		 </java>
+		<echo>Share deployment has been completed..</echo>
+   </target>
+	
+	<target name="deploy-all" description="Deploy alfesco and share war files to tomcat webapps">
+		<ant antfile="build.xml" description="Deploy alfesco war files to tomcat webapps"
+		     target="deploy-alfresco-war"/>
+		<ant antfile="build.xml" description="Deploy share war files to tomcat webapps"
+		     target="deploy-share-war"/>
 	</target>
 </project>
