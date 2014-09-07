@@ -9,7 +9,7 @@
 <alfresco-config>
 
    <!-- Activiti Review and Approve Workflow Definition -->
-   <config evaluator="string-compare" condition="activiti$activitiReviewPublish">
+   <config evaluator="string-compare" condition="activiti$activitiS3ReviewPublish">
       <forms>
          <form>
             <field-visibility>
