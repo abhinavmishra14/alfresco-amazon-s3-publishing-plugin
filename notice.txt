@@ -1,0 +1,15 @@
+Below is the list of licenses and modules used under corresponding licenses,
+
+===Apache 2.0 - License====
+jets3t		http://www.jets3t.org/
+commons-*   http://commons.apache.org/
+spring-*    http://www.springsource.com
+jug-*       http://www.apache.org/licenses/
+
+===Eclipse Public License===
+truezip-*	https://truezip.dev.java.net/ 
+
+
+======Alfresco SDK==========
+
+alfresco-*   http://wiki.alfresco.com/wiki/Alfresco_SDK_4.0
