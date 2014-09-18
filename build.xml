@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <!-- 
-   =======================================================
+   ===================================================================================
      * Alfresco Amazon S3 Channel Publishing Plugin build script
      * Copyright &copy; 2013-2014. Abhinav Kumar Mishra. 
      * All rights reserved.
@@ -18,7 +18,7 @@
 	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 	 * See the License for the specific language governing permissions and
 	 * limitations under the License.
-   =======================================================
+   ====================================================================================
 -->
 <project name="Alfresco Amazon S3 Channel Publishing Plugin Build Project" default="build-alfresco-amp" basedir=".">
 	
