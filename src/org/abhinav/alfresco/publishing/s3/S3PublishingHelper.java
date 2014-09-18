@@ -78,13 +78,13 @@ public class S3PublishingHelper {
 	 * @return the bytes
 	 */
 	public static byte[] getBytes(final File fileObj){
-		final byte[] bFile = new byte[(int) fileObj.length()];
+		final byte[] fileContent = new byte[(int) fileObj.length()];
 		try (FileInputStream fileInputStream = new FileInputStream(fileObj)) {
 			// convert file into array of bytes
-			fileInputStream.read(bFile);
+			fileInputStream.read(fileContent);
 		} catch (IOException ioex) {
 			System.err.println("Error occured while converting file to bytes: "+ ioex);
 		}
-		return bFile;
+		return fileContent;
 	}
 }

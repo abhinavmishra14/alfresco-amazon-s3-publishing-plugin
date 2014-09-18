@@ -111,9 +111,8 @@ public final class MimeTypesProvider {
 					MimetypeMap.MIMETYPE_OPENXML_SPREADSHEET,
 					MimetypeMap.MIMETYPE_OPENXML_PRESENTATION,
 					MimetypeMap.MIMETYPE_OPENXML_WORDPROCESSING,
-					MimetypeMap.MIMETYPE_BINARY,MimetypeMap.MIMETYPE_IMAGE_GIF,
-					MimetypeMap.MIMETYPE_IMAGE_JPEG,MimetypeMap.MIMETYPE_IMAGE_PNG,
-					MimetypeMap.MIMETYPE_OUTLOOK_MSG, MimetypeMap.MIMETYPE_ZIP);
+					MimetypeMap.MIMETYPE_IMAGE_GIF,MimetypeMap.MIMETYPE_IMAGE_JPEG,
+					MimetypeMap.MIMETYPE_IMAGE_PNG);
 		} else {
 			// Get the supported mimetypes from alfreco-global.properties file
 			return CollectionUtils.unmodifiableSet(supportedMimeTypes);
