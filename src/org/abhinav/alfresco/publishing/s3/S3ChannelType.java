@@ -179,7 +179,9 @@ public class S3ChannelType extends AbstractChannelType {
 				throw new AlfrescoRuntimeException(ioex.getLocalizedMessage());
 			} finally {
 				try {
-					s3RestServ.shutDownS3Service();
+					if(s3RestServ!=null){
+					  s3RestServ.shutDownS3Service();
+					}
 				} catch (ServiceException servExcp) {
 					LOG.error("Exception in publish() while shutting down s3 service: ",servExcp);
 				}
@@ -214,7 +216,9 @@ public class S3ChannelType extends AbstractChannelType {
 			throw new AlfrescoRuntimeException(ioex.getLocalizedMessage());
 		} finally {
 			try {
-				s3RestServ.shutDownS3Service();
+				if(s3RestServ!=null){
+				  s3RestServ.shutDownS3Service();
+				}
 			} catch (ServiceException servExcp) {
 				LOG.error("Exception in Unpublish() while shutting down s3 service: ",servExcp);
 			}
