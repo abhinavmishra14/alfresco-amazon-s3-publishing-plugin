@@ -28,7 +28,6 @@
 
 	<imports>
 		<import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d" />
-		<import uri="http://www.alfresco.org/model/system/1.0" prefix="sys" />
 		<import uri="http://www.alfresco.org/model/content/1.0" prefix="cm" />
 		<import uri="http://www.alfresco.org/model/publishing/1.0" prefix="pub" />
 	</imports>
@@ -52,11 +51,12 @@
 	<aspects>
 		<aspect name="s3:DeliveryChannelAspect">
 			<title>S3 Delivery Channel Aspect</title>
-			<description>Applied to a node that represents a s3 delivery channel</description>
+			<description>Used to capture the s3 bucket name</description>
 			<properties>
 				<property name="s3:bucket">
 					<title>S3 Bucket Name</title>
 					<type>d:text</type>
+					<mandatory>true</mandatory>
 				</property>
 			</properties>
 		</aspect>
