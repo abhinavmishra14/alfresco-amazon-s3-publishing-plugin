@@ -43,12 +43,11 @@
 	<property name="mmt.install.share" value="install ${share.amp.file} ${share.war.file} -verbose"/>
 	
     <target name="-clean">
-        <delete dir="${build.dir}/amp"/>
-        <delete dir="${build.dir}/lib" />
-        <delete dir="${build.dir}/classes"/>
+        <delete dir="${build.dir}"/>
     </target>
                        
     <target name="-init" depends="-clean">
+    	<mkdir dir="${build.dir}" />
         <mkdir dir="${build.dir}/amp" />
         <mkdir dir="${build.dir}/lib" />
         <mkdir dir="${build.dir}/classes" />
