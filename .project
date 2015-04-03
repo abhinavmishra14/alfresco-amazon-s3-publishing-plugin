@@ -4,7 +4,7 @@
 	<comment>AmazonS3_Alfresco_Publishing via alfresco channel manager</comment>
 	<projects>
 	</projects>
-		<buildSpec>
+	<buildSpec>
 		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>classes</name>
-			<type>2</type>
-			<location>C:/Alfresco/tomcat/shared/classes</location>
-		</link>
-	</linkedResources>
 </projectDescription>
