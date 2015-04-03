@@ -145,24 +145,23 @@ public class S3ChannelType extends AbstractChannelType {
 			final Map<QName, Serializable> channelProperties) {
 		LOG.info("publish() invoked...");
 
-		final ContentReader reader = contentService.getReader(nodeToPublish,ContentModel.PROP_CONTENT);
-		if (reader.exists()) {
-			File contentFile;
-			boolean deleteContentFileOnCompletion = false;
-			if (FileContentReader.class.isAssignableFrom(reader.getClass())) {
-				// Grab the content straight from the content store if we can...
-				contentFile = ((FileContentReader) reader).getFile();
+		final ContentReader contentReader = contentService.getReader(nodeToPublish,ContentModel.PROP_CONTENT);
+		if (contentReader.exists()) {
+			File contentFile=null;
+			boolean deleteContentFrmTempFlag = false;
+			if (FileContentReader.class.isAssignableFrom(contentReader.getClass())) {
+				contentFile = ((FileContentReader) contentReader).getFile();
 			} else {
-				// Otherwise copy it to a temp file and use the copy...
-				final File tempDir = TempFileProvider.getLongLifeTempDir("s3");
-				contentFile = TempFileProvider.createTempFile("s3", "", tempDir);
-				reader.getContent(contentFile);
-				deleteContentFileOnCompletion = true;
+				// Otherwise clone the content to temp and use it
+				final File tempDir = TempFileProvider.getLongLifeTempDir(ID);
+				contentFile = TempFileProvider.createTempFile(ID, "", tempDir);
+				contentReader.getContent(contentFile);
+				deleteContentFrmTempFlag = true;
 			}
 
 			S3RESTService s3RestServ = null;
 			try {
-				final String mimeType = reader.getMimetype();
+				final String mimeType = contentReader.getMimetype();
 				final String nodeUri = nodeToPublish.toString();
 				LOG.info("Publishing object: " + nodeUri);
 				LOG.info("Content_MIMETYPE: " + mimeType);
@@ -185,7 +184,7 @@ public class S3ChannelType extends AbstractChannelType {
 				} catch (ServiceException servExcp) {
 					LOG.error("Exception in publish() while shutting down s3 service: ",servExcp);
 				}
-				if (deleteContentFileOnCompletion) {
+				if (deleteContentFrmTempFlag) {
 					contentFile.delete();
 				}
 			}

@@ -26,6 +26,8 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.alfresco.service.namespace.QName;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import com.abhinav.alfresco.publishing.utils.ConfigReader;
 import com.abhinav.alfresco.publishing.utils.MimeTypesProvider;
@@ -38,7 +40,10 @@ import com.abhinav.alfresco.publishing.utils.S3RESTService;
  * @author abhinav kumar mishra
  */
 public class S3PublishingHelper {
-  
+	
+	 /** The Constant log. */
+    private final static Log LOG = LogFactory.getLog(S3PublishingHelper.class);
+    
 	/**
 	 * Gets the s3 service.
 	 *
@@ -46,6 +51,7 @@ public class S3PublishingHelper {
 	 * @return the s3 service
 	 */
 	public S3RESTService getS3Service(final Map<QName, Serializable> channelProperties){
+		LOG.info("Getting S3Service..");
 		//Getting the secret keys from properties file.
 		final Properties props = ConfigReader.getInstance().getKeys();
 		//Amazon Web Services Access Key
@@ -83,7 +89,7 @@ public class S3PublishingHelper {
 			// convert file into array of bytes
 			fileInputStream.read(fileContent);
 		} catch (IOException ioex) {
-			System.err.println("Error occured while converting file to bytes: "+ ioex);
+			LOG.error("Error occured while converting file to bytes: "+ ioex);
 		}
 		return fileContent;
 	}

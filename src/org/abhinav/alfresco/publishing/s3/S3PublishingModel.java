@@ -26,8 +26,8 @@ import org.alfresco.service.namespace.QName;
  */
 public class S3PublishingModel {
 
-	/** The GLOBAL_PROPERTIESFILE. */
-	public static final String GLOBAL_PROPERTIESFILE = "alfresco/module/s3-integration/alfresco-global.properties";
+	/** The S3_MODULE_PROPERTIESFILE. */
+	public static final String S3_MODULE_PROPERTIESFILE = "alfresco/module/s3-integration/alfresco-global.properties";
 
 	/** The supported mime key. */
 	public static final String SUPPORTD_MIME_KEY = "supportedMimeTypes";

@@ -65,7 +65,7 @@ public final class ConfigReader {
 	 */
 	private void init() {
 		try (InputStream inStream = Thread.currentThread().getContextClassLoader()
-				.getResourceAsStream(S3PublishingModel.GLOBAL_PROPERTIESFILE)) {
+				.getResourceAsStream(S3PublishingModel.S3_MODULE_PROPERTIESFILE)) {
 			if (LOG.isInfoEnabled()) {
 				LOG.info("Loading access keys from 'alfresco-global.properties'");
 			}

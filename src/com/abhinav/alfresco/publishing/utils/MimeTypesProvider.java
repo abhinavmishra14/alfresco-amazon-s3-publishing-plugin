@@ -71,7 +71,7 @@ public final class MimeTypesProvider {
 	private void init() {
 		final Properties props = new Properties();
 		try (InputStream inStream = Thread.currentThread().getContextClassLoader()
-				.getResourceAsStream(S3PublishingModel.GLOBAL_PROPERTIESFILE)) {
+				.getResourceAsStream(S3PublishingModel.S3_MODULE_PROPERTIESFILE)) {
 			props.load(inStream);
 		} catch (IOException ioex) {
 			if (LOG.isErrorEnabled()) {
