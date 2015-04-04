@@ -36,8 +36,8 @@
     <property name="alf.amp.file" value="${build.dir}/amp/alfresco-amazon-s3-publishing.amp"/>
     <property name="share.amp.file" value="${build.dir}/amp/alfresco-share-amazon-s3-publishing.amp"/>
 
-	<property name="alfresco.war.file" value="C:/Alfresco/tomcat/webapps/alfresco.war"/>
-	<property name="share.war.file" value="C:/Alfresco/tomcat/webapps/share.war"/>
+	<property name="alfresco.war.file" value="${alfresco.deploy.dir}/alfresco.war"/>
+	<property name="share.war.file" value="${alfresco.deploy.dir}/share.war"/>
 	
 	<property name="mmt.install.repo" value="install ${alf.amp.file} ${alfresco.war.file} -verbose"/>
 	<property name="mmt.install.share" value="install ${share.amp.file} ${share.war.file} -verbose"/>
